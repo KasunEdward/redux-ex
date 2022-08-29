@@ -1,24 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Counter from './features/counter/Counter';
+import Clock from './features/clock/Clock';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import ItemList from './features/itemList/ItemList';
+import MessageBox from './features/messageBox/MessageBox';
 
 function App() {
+  const ourMediaQuery = useMediaQuery('(min-width:400px)');
+  const items = [
+    'Shark',
+    'Dolphin',
+    'Octopus'
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Counter/>
+      <span>{`Is Screen at Minimum 400px: ${ourMediaQuery}`}</span>
+      <Clock/>
+      <ItemList items={items}/>
+      <MessageBox text={"hi kasun"}/>
     </div>
   );
 }
